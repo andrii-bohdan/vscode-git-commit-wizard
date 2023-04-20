@@ -1,6 +1,6 @@
 # Git-Commit-Wizard
 
-This is the README for your extension "git-commit-wizard". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "Git-commit-wizard". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 
