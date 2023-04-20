@@ -1,0 +1,150 @@
+{
+  "name": "git-commit-wizard",
+  "displayName": "git-commit-wizard",
+  "description": "Git Commit Wizard is a VS Code extension that guides developers through the process of creating clear and informative commit messages. By following the prompts in the wizard, developers can ensure that their commit messages accurately reflect the changes being made to their code and provide useful context for other team members.",
+  "version": "1.0.0",
+  "author": "Andrii Bohdan",
+  "engines": {
+    "vscode": "^1.77.3"
+  },
+  "categories": [
+    "Other",
+    "Formatters",
+    "SCM Providers"
+  ],
+  "main": "./out/index.js",
+  "contributes": {
+    "configuration": {
+      "title": "Git Commit Wizard",
+      "properties": {
+        "git-commit-wizard.template": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "title": "Template"
+          },
+          "default": [
+            "{prefix}({scope}): {message}"
+          ]
+        },
+        "git-commit-wizard.defaultValues": {
+          "type": "object",
+          "default": {
+            "scope": [
+              {
+                "label": "ci",
+                "value": "v"
+              }
+            ],
+            "message": [
+              {
+                "label": "ci",
+                "value": "Updated version db"
+              }
+            ]
+          }
+        },
+        "git-commit-wizard.defaultPromptOptions": {
+          "type": "object",
+          "default": {
+            "repository": {
+              "title": "Repository",
+              "placeholder": "Select a repository from the list (use arrow keys to navigate)"
+            },
+            "prefix": {
+              "title": "Prefix",
+              "placeholder": ""
+            },
+            "scope": {
+              "title": "Scope",
+              "placeholder": ""
+            },
+            "message": {
+              "title": "Message",
+              "placeholder": ""
+            }
+          }
+        },
+        "git-commit-wizard.variables": {
+          "type": "object",
+          "default": {
+            "prefix": [
+              {
+                "label": "🔨 build",
+                "detail": "Related changes (eg: npm / adding external dependencies)"
+              },
+              {
+                "label": "👷‍♂️ ci",
+                "detail": "Update workflow for CI"
+              },
+              {
+                "label": "💾 chore",
+                "detail": "A code that external user won't see (eg: change to .gitignore or prettierrc file)"
+              },
+              {
+                "label": "📑 docs",
+                "detail": "Documentation related changes"
+              },
+              {
+                "label": "✨ feat",
+                "detail": "A new feature"
+              },
+              {
+                "label": "🐞 fix",
+                "detail": "A bug fix"
+              },
+              {
+                "label": "🚄 perf",
+                "detail": "A code that improve performance"
+              },
+              {
+                "label": "🔎 ref",
+                "detail": "A code that neither fix bug nor adds a feature. (eg: You can use this when there is semantic changes like renaming a variable/function name)"
+              },
+              {
+                "label": "🎨 style",
+                "detail": "Changes that do not affect the meaning of the code (white-space, formatting, etc.)"
+              },
+              {
+                "label": "🤖 test",
+                "detail": "Adding new test or making changes to existing"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "git-commit-wizard.openCommitMessageScaffold",
+        "title": "Git Commit Wizard"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/emoji-regex": "^9.2.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.77.0",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "@vscode/test-electron": "^2.3.0",
+    "emoji-regex": "^10.2.1",
+    "eslint": "^8.36.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "semver": "^7.4.0"
+  }
+}
