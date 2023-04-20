@@ -2,7 +2,7 @@
   "name": "git-commit-wizard",
   "displayName": "git-commit-wizard",
   "description": "Git Commit Wizard is a VS Code extension that guides developers through the process of creating clear and informative commit messages. By following the prompts in the wizard, developers can ensure that their commit messages accurately reflect the changes being made to their code and provide useful context for other team members.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Andrii Bohdan",
   "engines": {
     "vscode": "^1.77.3"
