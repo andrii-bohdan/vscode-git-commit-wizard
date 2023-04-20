@@ -2,7 +2,7 @@ name: Increment version on push
 
 on:
   push:
-    branches: ["main", "pre-dev"]
+    branches: ["pre-dev"]
 
 jobs:
   increment-version:
@@ -52,10 +52,10 @@ jobs:
 
           # Commit the updated package.json
           git add package.json
-          git commit -m "Increment version to $NEW_VERSION"
+          git commit -m "🤖 bump(version): $NEW_VERSION"
 
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           branch: ${{ github.ref }}
-          github_token: ${{ secrets.GH_ACTION_PERSONAL_ACCESS_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
