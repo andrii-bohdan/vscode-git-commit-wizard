@@ -1,4 +1,4 @@
-# git-commit-wizard README
+# git-commit-wizard
 
 This is the README for your extension "git-commit-wizard". After writing up a brief description, we recommend including the following sections.
 
