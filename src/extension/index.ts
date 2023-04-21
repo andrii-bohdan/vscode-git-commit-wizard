@@ -33,16 +33,17 @@ export const activateExtension = async (repositories: Repository[]) => {
     getDefaultValuesSettings();
   const defaultPromptSettings: DefaultPromptSettings =
     getDefaultPromptSettings();
-
   const mappedRepository: RepositoryList[] = await repoNameMapper(repositories);
+
   if (mappedRepository.length > 1) {
+    const { title = "Repository", placeholder } =
+      defaultPromptSettings["repository"];
+
     selectedRepo = await quickPick(
       {
-        title: defaultPromptSettings["repository"].title || "Repository",
+        title,
         ignoreFocusOut: true,
-        placeHolder:
-          defaultPromptSettings["repository"].placeholder ||
-          "Please select a repository",
+        placeHolder: placeholder || "Please select a repository",
       },
       mappedRepository.map((r: any) => r.label).reverse()
     );
