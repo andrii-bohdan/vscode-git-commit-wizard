@@ -19,7 +19,121 @@ Please ensure that the Git extension is enabled in your VS Code environment.
 
 This extension contributes the following settings:
 
-- `git-commit-wizard.enable`: Enable/disable this extension.
+`git-commit-wizard.enable`: Enable/disable this extension.
+
+`git-commit-wizard.template`:
+
+
+An array of strings representing the commit message template. The following placeholders can be used:
+
+* `{prefix}`: The commit message prefix.
+* `{scope}`: The commit message scope.
+* `{message}`: The commit message message.
+
+
+Example:
+```
+{
+  "git-commit-wizard.template": [
+    "{prefix}({scope}): {message}"
+  ]
+}
+
+```
+
+`git-commit-wizard.defaultValues`:
+
+
+An object containing default values for the commit message fields. The following properties can be used:
+
+
+* `scope`: An array of objects with label and value properties.
+* `message`:  An array of objects with label and value properties.
+
+
+Example: 
+```
+{
+  "git-commit-wizard.defaultValues": {
+    "scope": [
+      {
+        "label": "feat",
+        "value": "my-new-feature"
+      }
+    ],
+    "message": [
+      {
+        "label": "feat",
+        "value": "Add a new feature"
+      }
+    ]
+  }
+}
+
+```
+
+`git-commit-wizard.defaultPromptOptions`:
+
+An object containing default options for the commit message prompt. The following properties can be used:
+
+* `repository`: An object with title and placeholder properties.
+* `prefix`: An object with title and placeholder properties.
+* `scope`: An object with title and placeholder properties.
+* `message`: An object with title and placeholder properties.
+
+Example:
+```
+{
+  "git-commit-wizard.defaultPromptOptions": {
+    "repository": {
+      "title": "Repository",
+      "placeholder": "Select a repository from the list (use arrow keys to navigate)"
+    },
+    "prefix": {
+      "title": "Prefix",
+      "placeholder": ""
+    },
+    "scope": {
+      "title": "Scope",
+      "placeholder": ""
+    },
+    "message": {
+      "title": "Message",
+      "placeholder": ""
+    }
+  }
+}
+
+```
+
+`git-commit-wizard.variables`:
+
+An object containing a list of commit message prefixes. Each prefix is represented by an array of objects with label and detail properties.
+
+Example:
+```
+{
+  "git-commit-wizard.variables": {
+    "prefix": [
+      {
+        "label": "feat",
+        "detail": "A new feature"
+      },
+      {
+        "label": "fix",
+        "detail": "A bug fix"
+      },
+      {
+        "label": "docs",
+        "detail": "Documentation changes"
+      }
+    ]
+  }
+}
+
+```
+
+
 
 ## Known Issues
 
