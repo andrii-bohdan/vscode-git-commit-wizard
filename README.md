@@ -1,5 +1,7 @@
 # Git-Commit-Wizard
 
+![Git Commit Wizard](/assets/git-commit-wizard.gif)
+
 This extension helps users write well-structured commit messages, making it easier to maintain and manage changes to code repositories. With its versatility, it can be used across multiple repositories in source control trees, enabling users to maintain a consistent approach to commit message formatting across their projects.
 
 ## Features
