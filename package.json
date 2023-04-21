@@ -4,6 +4,7 @@
   "description": "Git Commit Wizard is a VS Code extension that guides developers through the process of creating clear and informative commit messages",
   "version": "1.0.2",
   "author": "Andrii Bohdan",
+  "icon": "./assets/wizard-icon.png",
   "engines": {
     "vscode": "^1.77.3"
   },
@@ -32,13 +33,13 @@
           "default": {
             "scope": [
               {
-                "label": "ci",
+                "label": "bump",
                 "value": "v"
               }
             ],
             "message": [
               {
-                "label": "ci",
+                "label": "bump",
                 "value": "Updated version db"
               }
             ]
@@ -74,7 +75,11 @@
                 "detail": "Related changes (eg: npm / adding external dependencies)"
               },
               {
-                "label": "🤖 ci",
+                "label": "🔼 bump",
+                "detail": "Update version number to reflect significant changes"
+              },
+              {
+                "label": "🚀 ci",
                 "detail": "Update workflow for CI"
               },
               {
