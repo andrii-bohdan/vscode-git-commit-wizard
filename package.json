@@ -119,6 +119,13 @@
         }
       }
     },
+    "keybindings": [
+      {
+        "command": "git-commit-wizard.openCommitMessageScaffold",
+        "key": "ctrl+shift+enter",
+        "mac": "cmd+shift+enter"
+      }
+    ],
     "commands": [
       {
         "command": "git-commit-wizard.openCommitMessageScaffold",
