@@ -52,7 +52,7 @@ jobs:
 
           # Commit the updated package.json
           git add package.json
-          git commit -m "🤖 bump(version): $NEW_VERSION"
+          git commit -m "🔼 bump(version): $NEW_VERSION"
 
       - name: Push changes
         uses: ad-m/github-push-action@master
