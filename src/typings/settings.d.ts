@@ -23,7 +23,7 @@ export interface DefaultValueSettings {
 }
 
 export interface DefaultPromptOption {
-  title?: string;
+  title: string;
   placeholder?: string;
 }
 
