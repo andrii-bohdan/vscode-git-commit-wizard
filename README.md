@@ -1,71 +1,160 @@
 # Git-Commit-Wizard
 
-This is the README for your extension "Git-Commit-Wizard". After writing up a brief description, we recommend including the following sections.
+![Git Commit Wizard](/assets/git-commit-wizard.gif)
+
+This extension helps users write well-structured commit messages, making it easier to maintain and manage changes to code repositories. With its versatility, it can be used across multiple repositories in source control trees, enabling users to maintain a consistent approach to commit message formatting across their projects.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+* Provides the process of writing a well-structured commit message.
+* Allows you to select a commit type from a predefined list based on the package.json file.
+* Allows you to enter a commit scope and message to complete the commit message in the standard format.
+* Allows working with microservices
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Please ensure that the Git extension is enabled in your VS Code environment.
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
 This extension contributes the following settings:
 
-- `myExtension.enable`: Enable/disable this extension.
-- `myExtension.thing`: Set to `blah` to do something.
+`git-commit-wizard.enable`: Enable/disable this extension.
 
-## Known Issues
+`git-commit-wizard.template`:
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+
+An array of strings representing the commit message template. The following placeholders can be used:
+
+* `{prefix}`: The commit message prefix.
+* `{scope}`: The commit message scope.
+* `{message}`: The commit message message.
+
+
+Example:
+```
+{
+  "git-commit-wizard.template": [
+    "{prefix}({scope}): {message}"
+  ]
+}
+
+```
+
+`git-commit-wizard.defaultValues`:
+
+
+An object containing default values for the commit message fields. The following properties can be used:
+
+
+* `scope`: An array of objects with label and value properties.
+* `message`:  An array of objects with label and value properties.
+
+
+Example: 
+```
+{
+  "git-commit-wizard.defaultValues": {
+    "scope": [
+      {
+        "label": "feat",
+        "value": "my-new-feature"
+      }
+    ],
+    "message": [
+      {
+        "label": "feat",
+        "value": "Add a new feature"
+      }
+    ]
+  }
+}
+
+```
+
+`git-commit-wizard.defaultPromptOptions`:
+
+An object containing default options for the commit message prompt. The following properties can be used:
+
+* `repository`: An object with title and placeholder properties.
+* `prefix`: An object with title and placeholder properties.
+* `scope`: An object with title and placeholder properties.
+* `message`: An object with title and placeholder properties.
+
+Example:
+```
+{
+  "git-commit-wizard.defaultPromptOptions": {
+    "repository": {
+      "title": "Repository",
+      "placeholder": "Select a repository from the list (use arrow keys to navigate)"
+    },
+    "prefix": {
+      "title": "Prefix",
+      "placeholder": ""
+    },
+    "scope": {
+      "title": "Scope",
+      "placeholder": ""
+    },
+    "message": {
+      "title": "Message",
+      "placeholder": ""
+    }
+  }
+}
+
+```
+
+`git-commit-wizard.variables`:
+
+An object containing a list of commit message prefixes. Each prefix is represented by an array of objects with label and detail properties.
+
+Example:
+```
+{
+  "git-commit-wizard.variables": {
+    "prefix": [
+      {
+        "label": "feat",
+        "detail": "A new feature"
+      },
+      {
+        "label": "fix",
+        "detail": "A bug fix"
+      },
+      {
+        "label": "docs",
+        "detail": "Documentation changes"
+      }
+    ]
+  }
+}
+
+```
+
+
+## Keyboard Shortcut
+
+
+This extension also includes a keyboard shortcut to quickly open the commit message scaffold. Use the following shortcut to activate it:
+
+
+- **Windows / Linux:** `Ctrl+Shift+Enter`
+- **macOS:** `Cmd+Shift+Enter`
+
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
 
 ### 1.0.0
 
-Initial release of ...
+Initial release of Git-Commit-Wizard.
 
-### 1.0.1
 
-Fixed issue #.
+## Known Issues
 
-### 1.1.0
+There are no known issues at this time.
 
-Added features X, Y, and Z.
 
----
 
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-- [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-- Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-- Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-- Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-- [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-- [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
