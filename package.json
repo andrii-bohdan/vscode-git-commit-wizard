@@ -11,7 +11,7 @@
     "url": "https://github.com/andrii-bohdan/vscode-git-commit-wizard"
   },
   "engines": {
-    "vscode": "^1.52.0"
+    "vscode": "^1.77.0"
   },
   "categories": [
     "Other",
@@ -20,7 +20,7 @@
   ],
   "main": "./out/index.js",
   "activationEvents": [
-    "onCommand:git-commit-wizard.openCommitMessageScaffold"
+    "onCommand:git-commit-wizard.openCommitMessage"
   ],
   "contributes": {
     "configuration": {
@@ -129,14 +129,14 @@
     },
     "keybindings": [
       {
-        "command": "git-commit-wizard.openCommitMessageScaffold",
+        "command": "git-commit-wizard.openCommitMessage",
         "key": "ctrl+shift+enter",
         "mac": "cmd+shift+enter"
       }
     ],
     "commands": [
       {
-        "command": "git-commit-wizard.openCommitMessageScaffold",
+        "command": "git-commit-wizard.openCommitMessage",
         "title": "Git Commit Wizard"
       }
     ]
@@ -158,13 +158,13 @@
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
     "@vscode/test-electron": "^2.3.0",
-    "emoji-regex": "^10.2.1",
     "eslint": "^8.36.0",
     "glob": "^8.1.0",
     "mocha": "^10.2.0",
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "emoji-regex": "^10.2.1",
     "semver": "^7.4.0"
   }
 }
