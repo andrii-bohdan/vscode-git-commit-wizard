@@ -11,7 +11,7 @@
     "url": "https://github.com/andrii-bohdan/vscode-git-commit-wizard"
   },
   "engines": {
-    "vscode": "^1.77.0"
+    "vscode": "^1.60.0"
   },
   "categories": [
     "Other",
@@ -34,7 +34,8 @@
           },
           "default": [
             "{prefix}({scope}): {message}"
-          ]
+          ],
+          "markdownDescription": "Define template schema"
         },
         "git-commit-wizard.defaultValues": {
           "type": "object",
@@ -51,7 +52,8 @@
                 "value": "Updated version db"
               }
             ]
-          }
+          },
+          "markdownDescription": "Define default values for inputs"
         },
         "git-commit-wizard.defaultPromptOptions": {
           "type": "object",
@@ -72,7 +74,8 @@
               "title": "Message",
               "placeholder": ""
             }
-          }
+          },
+          "markdownDescription": "Define default prompt titles and placeholders"
         },
         "git-commit-wizard.variables": {
           "type": "object",
@@ -123,7 +126,8 @@
                 "detail": "Adding new test or making changes to existing"
               }
             ]
-          }
+          },
+          "markdownDescription": "Defines default prefixes for the Git commit wizard, including labels and descriptions for commit types."
         }
       }
     },
@@ -154,7 +158,7 @@
     "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.1",
     "@types/node": "16.x",
-    "@types/vscode": "^1.77.0",
+    "@types/vscode": "^1.60.0",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
     "@vscode/test-electron": "^2.3.0",
