@@ -4,7 +4,7 @@
   "description": "A customizable VS Code extension for semantic committing, compatible with microservices and multiple source control repositories.",
   "version": "1.0.10",
   "author": "Andrii Bohdan",
-  "icon": "./assets/wizard-icon.png",
+  "icon": "./assets/image/wizard-icon.png",
   "publisher": "andrii-bohdan",
   "repository": {
     "type": "git",
