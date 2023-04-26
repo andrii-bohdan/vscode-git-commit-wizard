@@ -11,7 +11,7 @@
     "url": "https://github.com/andrii-bohdan/vscode-git-commit-wizard"
   },
   "engines": {
-    "vscode": "^1.77.3"
+    "vscode": "^1.52.0"
   },
   "categories": [
     "Other",
