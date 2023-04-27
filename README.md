@@ -1,8 +1,33 @@
-# Git-Commit-Wizard
-
-![Git Commit Wizard](./assets/git-commit-wizard.gif)
+  <div align="center">
+    <img src="./assets/image/wizard-icon.png"/>
+  </div>
+  
+  <h1 align="center"> VS Code - Git Commit Wizard</h1>
+  
+  <div align="center">
+     <a href="https://marketplace.visualstudio.com/items?itemName=andrii-bohdan.git-commit-wizard" alt="Marketplace"><img src="https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" alt="Marketplace"></a>
+     <a href="https://open-vsx.org/extension/andrii-bohdan/git-commit-wizard" alt="Open Eclipse"><img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white" ></a>
+     <a href="https://open-vsx.org/extension/andrii-bohdan/git-commit-wizard" alt="Open VSX"><img src="https://vscodium.com/img/code.png" width="28" height="24"></a>
+  </div>
+  
+  <br/>
+  <div align="center">
+    <a href="https://marketplace.visualstudio.com/items?itemName=andrii-bohdan.git-commit-wizard">Installation</a> ·
+    <a href="https://github.com/andrii-bohdan/vscode-git-commit-wizard#description">Description</a> ·
+    <a href="https://github.com/andrii-bohdan/vscode-git-commit-wizard#features">Feature</a> ·
+    <a href="https://github.com/andrii-bohdan/vscode-git-commit-wizard#requirements">Requirements</a> ·
+    <a href="https://github.com/andrii-bohdan/vscode-git-commit-wizard#extension-settings">Extension Settings</a> ·
+    <a href="https://github.com/andrii-bohdan/vscode-git-commit-wizard#keyboard-shortcut"> Keyboard Shortcut</a> ·    
+  </div>
+  
+ 
+   
+  
+## Description
 
 This extension helps users write well-structured commit messages, making it easier to maintain and manage changes to code repositories. With its versatility, it can be used across multiple repositories in source control trees, enabling users to maintain a consistent approach to commit message formatting across their projects.
+
+![Git Commit Wizard](./assets/demo.gif)
 
 ## Features
 
@@ -10,6 +35,7 @@ This extension helps users write well-structured commit messages, making it easi
 - Allows you to select a commit type from a predefined list based on the package.json file.
 - Allows you to enter a commit scope and message to complete the commit message in the standard format.
 - Allows working with microservices
+- Compatibility with VSCodium
 
 ## Requirements
 
