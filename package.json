@@ -2,7 +2,7 @@
   "name": "git-commit-wizard",
   "displayName": "git-commit-wizard",
   "description": "A customizable VS Code extension for semantic committing, compatible with microservices and multiple source control repositories.",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "author": "Andrii Bohdan",
   "icon": "./assets/image/wizard-icon.png",
   "publisher": "andrii-bohdan",

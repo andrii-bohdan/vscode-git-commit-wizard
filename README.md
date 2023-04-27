@@ -1,5 +1,5 @@
   <div align="center">
-    <img src="./assets/image/wizard-icon.png"/>
+    <img src="./assets/image/wizard-icon.png"alt="wizard icon"/> 
   </div>
   
   <h1 align="center"> VS Code - Git Commit Wizard</h1>
@@ -17,19 +17,21 @@
     <a href="https://github.com/andrii-bohdan/vscode-git-commit-wizard#features">Feature</a> ·
     <a href="https://github.com/andrii-bohdan/vscode-git-commit-wizard#requirements">Requirements</a> ·
     <a href="https://github.com/andrii-bohdan/vscode-git-commit-wizard#extension-settings">Extension Settings</a> ·
-    <a href="https://github.com/andrii-bohdan/vscode-git-commit-wizard#keyboard-shortcut"> Keyboard Shortcut</a> ·    
+    <a href="https://github.com/andrii-bohdan/vscode-git-commit-wizard#keyboard-shortcut"> Keyboard Shortcut</a>    
   </div>
   
  
    
   
-## Description
+<h2>Description</h2>
 
 This extension helps users write well-structured commit messages, making it easier to maintain and manage changes to code repositories. With its versatility, it can be used across multiple repositories in source control trees, enabling users to maintain a consistent approach to commit message formatting across their projects.
 
-![Git Commit Wizard](./assets/demo.gif)
 
-## Features
+<img src="./assets/demo.gif" alt="Git Commit Wizard"/>
+
+
+<h2>Features</h2>
 
 - Provides the process of writing a well-structured commit message.
 - Allows you to select a commit type from a predefined list based on the package.json file.
@@ -37,11 +39,11 @@ This extension helps users write well-structured commit messages, making it easi
 - Allows working with microservices
 - Compatibility with VSCodium
 
-## Requirements
+<h2> Requirements</h2>
 
 Please ensure that the Git extension is enabled in your VS Code environment.
 
-## Extension Settings
+<h2> Extension Settings</h2>
 
 This extension contributes the following settings:
 
@@ -158,19 +160,19 @@ Example:
 
 ```
 
-## Keyboard Shortcut
+<h2> Keyboard Shortcut </h2>
 
 This extension also includes a keyboard shortcut to quickly open the commit message scaffold. Use the following shortcut to activate it:
 
 - **Windows / Linux:** `Ctrl+Shift+Enter`
 - **macOS:** `Cmd+Shift+Enter`
 
-## Release Notes
+<h2> Release Notes </h2>
 
 ### 1.0.0
 
 Initial release of Git-Commit-Wizard.
 
-## Known Issues
+<h2> Known Issues </h2>
 
 There are no known issues at this time.
