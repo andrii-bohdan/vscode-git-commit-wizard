@@ -18,15 +18,17 @@ export const customQuickPick = async (
     tooltip: "Settings",
   };
   Object.assign(qp, params);
-
   qp.buttons = [addButton];
   qp.items = items;
 
-  qp.onDidTriggerButton(async (button) => {
-    await commands.executeCommand(
-      "workbench.action.openSettings",
-      EXTENSION_NAME
-    );
+  let buttonClicked: boolean = false;
+
+  const buttonClickedPromise = new Promise<void>((resolve) => {
+    qp.onDidTriggerButton(() => {
+      buttonClicked = true;
+      resolve();
+      commands.executeCommand("workbench.action.openSettings", EXTENSION_NAME);
+    });
   });
 
   const value = new Promise<string>((resolve) => {
@@ -42,5 +44,6 @@ export const customQuickPick = async (
     qp.show();
   });
 
-  return value;
+  await Promise.race([buttonClickedPromise, value]);
+  return { value: await value, buttonClicked };
 };
