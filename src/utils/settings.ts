@@ -1,39 +1,39 @@
 import { EXTENSION_NAME } from "./../config/index";
 import { workspace } from "vscode";
 import {
-  DefaultPromptSettings,
-  DefaultValueSettings,
-  VariableDetails,
+  InputSettings,
+  AutofillCommits,
+  CommitOptions,
 } from "../typings/settings";
 
-export const getTemplate = () => {
-  const template: string[] | undefined = workspace
+export const getCommitTemplate = () => {
+  const commitTemplate: string[] | undefined = workspace
     .getConfiguration(EXTENSION_NAME)
-    .get("template");
+    .get("commitTemplate");
 
-  return template?.join("\n") as string;
+  return commitTemplate?.join("\n") as string;
 };
 
-export const getVariables = () => {
-  const variable: VariableDetails | undefined = workspace
+export const getCommitOptions = () => {
+  const commitOptions: CommitOptions | undefined = workspace
     .getConfiguration(EXTENSION_NAME)
-    .get("variables");
+    .get("commitOptions");
 
-  return variable as VariableDetails;
+  return commitOptions as CommitOptions;
 };
 
-export const getDefaultValuesSettings = (): DefaultValueSettings => {
-  const defaultValues = workspace
+export const getAutofillCommits = (): AutofillCommits => {
+  const autofillCommits = workspace
     .getConfiguration(EXTENSION_NAME)
-    .get("defaultValues");
+    .get("autofillCommits");
 
-  return defaultValues as DefaultValueSettings;
+  return autofillCommits as AutofillCommits;
 };
 
-export const getDefaultPromptSettings = (): DefaultPromptSettings => {
-  const commitInputOptions = workspace
+export const getInputSettings = (): InputSettings => {
+  const inputSettings = workspace
     .getConfiguration(EXTENSION_NAME)
-    .get("defaultPromptOptions");
+    .get("inputSettings");
 
-  return commitInputOptions as DefaultPromptSettings;
+  return inputSettings as InputSettings;
 };

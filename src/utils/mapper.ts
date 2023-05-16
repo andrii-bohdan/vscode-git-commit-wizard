@@ -1,14 +1,14 @@
 import emojiRegex from "emoji-regex";
-import { DefaultValue, Variable } from "../typings/settings";
+import { Commit } from "../typings/settings";
 
 export const mapDefaultValueByLabel = (
-  values: DefaultValue[],
+  values: Commit[],
   label?: string
 ): string | undefined => {
   const regex = emojiRegex();
   const regexLabel = label?.replace(regex, "").trim();
   const filteredValue = values
-    ?.filter((v: DefaultValue) => v.label === regexLabel)
+    ?.filter((c: Commit) => c.key === regexLabel)
     .map((v) => v.value)[0];
   return filteredValue;
 };
@@ -24,7 +24,7 @@ export const templateParser = (template: string): string[] => {
   return variables;
 };
 
-export const templateSerializer = (template: string, data: Variable[]) => {
+export const templateSerializer = (template: string, data: Commit[]) => {
   let newTemplate = template;
 
   for (let i = 0; i < data.length; i++) {

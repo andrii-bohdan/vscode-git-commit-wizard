@@ -5,28 +5,23 @@ export interface QuickPickSettings
   detail?: string;
 }
 
-export interface VariableDetails {
+export interface CommitOptions {
   [key: string]: QuickPickSettings[];
 }
 
-export interface Variable {
+export interface Commit {
   key: string;
   value: string;
 }
-
-export interface DefaultValue {
-  label: string;
-  value: string;
-}
-export interface DefaultValueSettings {
-  [key: string]: DefaultValue[];
+export interface AutofillCommits {
+  [key: string]: Commit[];
 }
 
-export interface DefaultPromptOption {
+export interface InputOption {
   title: string;
   placeholder?: string;
 }
 
-export interface DefaultPromptSettings {
-  [key: string]: DefaultPromptOption;
+export interface InputSettings {
+  [key: string]: InputOption;
 }
