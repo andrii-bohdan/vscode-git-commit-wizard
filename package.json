@@ -19,6 +19,9 @@
     "SCM Providers"
   ],
   "main": "./out/index.js",
+  "activationEvents": [
+    "onCommand:git-commit-wizard.openCommitMessage"
+  ],
   "contributes": {
     "configuration": {
       "title": "Git Commit Wizard",
