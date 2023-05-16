@@ -1,18 +1,18 @@
 import { Repository } from "./../typings/git.d";
 import {
-  getDefaultPromptSettings,
-  getDefaultValuesSettings,
-  getTemplate,
-  getVariables,
+  getCommitTemplate,
+  getCommitOptions,
+  getAutofillCommits,
+  getInputSettings,
 } from "./../utils/settings";
 import { repoNameMapper } from "../utils/git";
 import { quickPick, quickText } from "../command/action/prompt-action";
 import { RepositoryList, SelectedRepository } from "../typings/repository";
 import {
-  Variable,
-  DefaultPromptSettings,
-  DefaultValueSettings,
-  DefaultPromptOption,
+  Commit,
+  AutofillCommits,
+  InputOption,
+  InputSettings,
 } from "../typings/settings";
 import { expandAllRepository } from "../command";
 import {
@@ -22,87 +22,83 @@ import {
 } from "../utils/mapper";
 
 export const activateExtension = async (repositories: Repository[]) => {
-  const variableReplacements: Variable[] = [];
-  let selectedRepo: SelectedRepository;
+  const commitReplacements: Commit[] = [];
+  let selectedRepo: SelectedRepository | string;
+
   let storedLabel: string | undefined;
 
-  const template = getTemplate() || "{prefix}: {message}";
-  const variables = templateParser(template);
-  const variablesSettings = getVariables();
-  const getDefaultValuesSetting: DefaultValueSettings =
-    getDefaultValuesSettings();
-  const defaultPromptSettings: DefaultPromptSettings =
-    getDefaultPromptSettings();
   const mappedRepository: RepositoryList[] = await repoNameMapper(repositories);
 
-  if (mappedRepository.length > 1) {
-    const { title = "Repository", placeholder } =
-      defaultPromptSettings["repository"];
+  const template = getCommitTemplate() || "{prefix}: {message}";
+  const variables = templateParser(template);
+  const commitOptions = getCommitOptions();
+  const autofillCommitsList: AutofillCommits = getAutofillCommits();
+  const inputOptions: InputSettings = getInputSettings();
 
+  if (mappedRepository.length > 1) {
+    const { title = "Repository", placeholder } = inputOptions["repository"];
     selectedRepo = await quickPick(
       {
         title,
-        ignoreFocusOut: true,
+        ignoreFocusOut: false,
         placeHolder: placeholder || "Please select a repository",
       },
-      mappedRepository.map((r: any) => r.label).reverse()
+      mappedRepository
     );
     await expandAllRepository();
   } else {
     selectedRepo = mappedRepository[0];
   }
 
-  const repositoryList: RepositoryList =
+  const currentRepo: RepositoryList =
     mappedRepository.find((r: any) => r.label === selectedRepo) ??
     mappedRepository[0];
 
   for (let i = 0; i < variables.length; i++) {
     const v = variables[i];
-    const variablesValue = variablesSettings[v];
+    const commitList = commitOptions[v];
 
-    let result: Variable = {
+    let result: Commit = {
       key: v,
       value: "",
     };
 
-    const defaultValuesSettings = getDefaultValuesSetting[v];
-    const defaultValue = mapDefaultValueByLabel(
-      defaultValuesSettings,
+    const autofillCommit = mapDefaultValueByLabel(
+      autofillCommitsList[v],
       storedLabel
     );
-    const { title = v, placeholder }: DefaultPromptOption =
-      defaultPromptSettings[v];
+    const { title = v, placeholder }: InputOption = inputOptions[v];
 
-    if (!variablesValue) {
+    if (!commitList) {
       const inputText = await quickText({
         title,
         placeHolder: placeholder || `Enter the <${v}> of the commit`,
-        ignoreFocusOut: true,
-        value: defaultValue,
-        prompt: !!defaultValue
-          ? `The default value is: "${defaultValue}"`
+        ignoreFocusOut: false,
+        value: autofillCommit,
+        prompt: !!autofillCommit
+          ? `The default value is: "${autofillCommit}"`
           : undefined,
       });
       result.value = inputText;
     } else {
-      const inputList = await quickPick(
+      const value = await quickPick(
         {
           title,
-          ignoreFocusOut: true,
+          ignoreFocusOut: false,
           placeHolder:
             placeholder || `Select a commit <${v}> from the following options`,
         },
-        variablesValue.map((c) => ({ label: c.label, detail: c.detail ?? "" }))
+        commitList.map((c) => ({ label: c.label, detail: c.detail ?? "" }))
       );
-      storedLabel = inputList?.label;
-      result.value = inputList!.label;
+      storedLabel = value;
+      result.value = value || "";
     }
 
-    variableReplacements.push(result);
+    commitReplacements.push(result);
   }
 
-  if (variableReplacements.length >= variables.length) {
-    const commitMessage = templateSerializer(template, variableReplacements);
-    repositoryList.inputBox.value = commitMessage;
+  if (commitReplacements.length >= variables.length) {
+    const commitMessage = templateSerializer(template, commitReplacements);
+    currentRepo.inputBox.value = commitMessage;
   }
 };
