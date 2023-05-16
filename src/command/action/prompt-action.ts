@@ -4,16 +4,22 @@ import {
   QuickPickOptions,
   window,
 } from "vscode";
+import { customQuickPick } from "../../utils/quick-inputs";
 
 export const quickPick = async (
   params: QuickPickOptions,
   values: QuickPickItem[]
 ) => {
-  const value = await window.showQuickPick(values, params);
-  if (!value) {
+  const { value, buttonClicked } = await customQuickPick(params, values);
+  if (!value && !buttonClicked) {
     window.showErrorMessage("Message is cancel");
   }
-  return value;
+
+  if (buttonClicked) {
+    throw new Error();
+  } else {
+    return value;
+  }
 };
 
 export const quickText = async (params: InputBoxOptions) => {

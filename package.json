@@ -2,7 +2,7 @@
   "name": "git-commit-wizard",
   "displayName": "git-commit-wizard",
   "description": "A customizable VS Code extension for semantic committing, compatible with microservices and multiple source control repositories.",
-  "version": "1.0.12",
+  "version": "2.0.0",
   "author": "Andrii Bohdan",
   "icon": "./assets/image/wizard-icon.png",
   "publisher": "andrii-bohdan",
@@ -19,14 +19,11 @@
     "SCM Providers"
   ],
   "main": "./out/index.js",
-  "activationEvents": [
-    "onCommand:git-commit-wizard.openCommitMessage"
-  ],
   "contributes": {
     "configuration": {
       "title": "Git Commit Wizard",
       "properties": {
-        "git-commit-wizard.template": {
+        "git-commit-wizard.commitTemplate": {
           "type": "array",
           "items": {
             "type": "string",
@@ -35,27 +32,27 @@
           "default": [
             "{prefix}({scope}): {message}"
           ],
-          "markdownDescription": "Define template schema"
+          "markdownDescription": "Define your Git commit message template with this setting. The default template includes placeholders for prefix, scope, and message. Customize it by modifying the default or adding your own lines. Use '{prefix}', '{scope}', and '{message}' to insert text."
         },
-        "git-commit-wizard.defaultValues": {
+        "git-commit-wizard.autofillCommits": {
           "type": "object",
           "default": {
             "scope": [
               {
-                "label": "bump",
+                "key": "bump",
                 "value": "v"
               }
             ],
             "message": [
               {
-                "label": "bump",
-                "value": "Updated version db"
+                "key": "bump",
+                "value": "updated version db"
               }
             ]
           },
-          "markdownDescription": "Define default values for inputs"
+          "markdownDescription": "Create suggested options for writing commit messages, helping you quickly describe your changes.Select a 'scope' that describes the type of change and a 'message' that provides a brief summary of what you did. Each option has a key (commitOptions label) and a value (code used to fill out the commit message)."
         },
-        "git-commit-wizard.defaultPromptOptions": {
+        "git-commit-wizard.inputSettings": {
           "type": "object",
           "default": {
             "repository": {
@@ -75,9 +72,9 @@
               "placeholder": ""
             }
           },
-          "markdownDescription": "Define default prompt titles and placeholders"
+          "markdownDescription": "In this section, you can modify standard placeholders and titles for input and list"
         },
-        "git-commit-wizard.variables": {
+        "git-commit-wizard.commitOptions": {
           "type": "object",
           "default": {
             "prefix": [
@@ -127,7 +124,7 @@
               }
             ]
           },
-          "markdownDescription": "Defines default prefixes for the Git commit wizard, including labels and descriptions for commit types."
+          "markdownDescription": "In this section you can create/modify commit options.Each item in the list has a label and details. Add your own or use existing ones"
         }
       }
     },
