@@ -49,7 +49,7 @@ This extension contributes the following settings:
 
 `git-commit-wizard.enable`: Enable/disable this extension.
 
-`git-commit-wizard.template`:
+`git-commit-wizard.commitTemplate`:
 
 An array of strings representing the commit message template. The following placeholders can be used:
 
@@ -61,14 +61,14 @@ Example:
 
 ```
 {
-  "git-commit-wizard.template": [
+  "git-commit-wizard.commitTemplate": [
     "{prefix}({scope}): {message}"
   ]
 }
 
 ```
 
-`git-commit-wizard.defaultValues`:
+`git-commit-wizard.autofillCommits`:
 
 An object containing default values for the commit message fields. The following properties can be used:
 
@@ -79,16 +79,16 @@ Example:
 
 ```
 {
-  "git-commit-wizard.defaultValues": {
+  "git-commit-wizard.autofillCommits": {
     "scope": [
       {
-        "label": "feat",
+        "key": "feat",
         "value": "my-new-feature"
       }
     ],
     "message": [
       {
-        "label": "feat",
+        "key": "feat",
         "value": "Add a new feature"
       }
     ]
@@ -97,7 +97,7 @@ Example:
 
 ```
 
-`git-commit-wizard.defaultPromptOptions`:
+`git-commit-wizard.inputSettings`:
 
 An object containing default options for the commit message prompt. The following properties can be used:
 
@@ -110,7 +110,7 @@ Example:
 
 ```
 {
-  "git-commit-wizard.defaultPromptOptions": {
+  "git-commit-wizard.inputSettings": {
     "repository": {
       "title": "Repository",
       "placeholder": "Select a repository from the list (use arrow keys to navigate)"
@@ -132,7 +132,7 @@ Example:
 
 ```
 
-`git-commit-wizard.variables`:
+`git-commit-wizard.commitOptions`:
 
 An object containing a list of commit message prefixes. Each prefix is represented by an array of objects with label and detail properties.
 
@@ -140,7 +140,7 @@ Example:
 
 ```
 {
-  "git-commit-wizard.variables": {
+  "git-commit-wizard.commitOptions": {
     "prefix": [
       {
         "label": "feat",
@@ -169,7 +169,7 @@ This extension also includes a keyboard shortcut to quickly open the commit mess
 
 <h2> Release Notes </h2>
 
-### 1.0.0
+### 1.0.12
 
 Initial release of Git-Commit-Wizard.
 
