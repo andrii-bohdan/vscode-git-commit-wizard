@@ -22,3 +22,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           commit-message: "🔼 bump(v): version to {{version}} [skip ci]"
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.version-bump.outputs.new_version }}
+          release_name: Release v${{ steps.version-bump.outputs.new_version }}
+          body: |
+            Auto-generated release for version v${{ steps.version-bump.outputs.new_version }}.
+          draft: false
+          prerelease: false
