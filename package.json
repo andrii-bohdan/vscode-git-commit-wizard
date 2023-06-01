@@ -20,8 +20,7 @@
   ],
   "main": "./out/index.js",
   "activationEvents": [
-    "onCommand:git-commit-wizard.openCommitMessage",
-    "onStartupFinished"
+    "*"
   ],
   "contributes": {
     "configuration": {
