@@ -46,15 +46,14 @@ export const activateExtension = async (repositories: Repository[]) => {
       mappedRepository
     );
     await expandAllRepository();
-  } else {
-    selectedRepo = mappedRepository[0];
   }
 
-  const currentRepo: RepositoryList =
-    mappedRepository.find((r: any) => r.label === selectedRepo) ??
-    mappedRepository[0];
+  // Stop executing if selectedRepo is not valid
+  if (!selectedRepo || typeof selectedRepo !== "string") {
+    return;
+  }
 
-  for (let i = 0; i < variables.length; i++) {
+  loop: for (let i = 0; i < variables.length; i++) {
     const v = variables[i];
     const commitList = commitOptions[v];
 
@@ -90,12 +89,20 @@ export const activateExtension = async (repositories: Repository[]) => {
         },
         commitList.map((c) => ({ label: c.label, detail: c.detail ?? "" }))
       );
+
+      if (!value) {
+        break loop;
+      }
       storedLabel = value;
       result.value = value || "";
     }
 
     commitReplacements.push(result);
   }
+
+  const currentRepo: RepositoryList =
+    mappedRepository.find((r: any) => r.label === selectedRepo) ??
+    mappedRepository[0];
 
   if (commitReplacements.length >= variables.length) {
     const commitMessage = templateSerializer(template, commitReplacements);
