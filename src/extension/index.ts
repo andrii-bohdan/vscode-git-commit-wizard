@@ -48,12 +48,7 @@ export const activateExtension = async (repositories: Repository[]) => {
     await expandAllRepository();
   }
 
-  // Stop executing if selectedRepo is not valid
-  if (!selectedRepo || typeof selectedRepo !== "string") {
-    return;
-  }
-
-  loop: for (let i = 0; i < variables.length; i++) {
+  for (let i = 0; i < variables.length; i++) {
     const v = variables[i];
     const commitList = commitOptions[v];
 
@@ -90,9 +85,6 @@ export const activateExtension = async (repositories: Repository[]) => {
         commitList.map((c) => ({ label: c.label, detail: c.detail ?? "" }))
       );
 
-      if (!value) {
-        break loop;
-      }
       storedLabel = value;
       result.value = value || "";
     }
