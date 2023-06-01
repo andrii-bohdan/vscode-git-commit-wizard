@@ -11,8 +11,7 @@
     "url": "https://github.com/andrii-bohdan/vscode-git-commit-wizard"
   },
   "engines": {
-    "vscode": "^1.60.0",
-    "vscode-web": "^1.0.0"
+    "vscode": "^1.60.0"
   },
   "categories": [
     "Other",
@@ -21,8 +20,8 @@
   ],
   "main": "./out/index.js",
   "activationEvents": [
-    "onStartupFinished",
-    "onCommand:git-commit-wizard.openCommitMessage"
+    "onCommand:git-commit-wizard.openCommitMessage",
+    "onStartupFinished"
   ],
   "contributes": {
     "configuration": {
