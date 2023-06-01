@@ -15,11 +15,7 @@ export const quickPick = async (
     window.showErrorMessage("Message is cancel");
   }
 
-  if (buttonClicked) {
-    throw new Error();
-  } else {
-    return value;
-  }
+  return value;
 };
 
 export const quickText = async (params: InputBoxOptions) => {
