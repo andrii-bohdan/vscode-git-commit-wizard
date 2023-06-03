@@ -1,5 +1,5 @@
 import emojiRegex from "emoji-regex";
-import { Commit } from "../typings/settings";
+import { Commit } from "../../commons/typings/settings";
 
 export const mapDefaultValueByLabel = (
   values: Commit[],

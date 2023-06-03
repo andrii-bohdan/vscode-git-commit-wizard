@@ -4,7 +4,7 @@ import {
   InputSettings,
   AutofillCommits,
   CommitOptions,
-} from "../typings/settings";
+} from "../../commons/typings/settings";
 
 export const getCommitTemplate = () => {
   const commitTemplate: string[] | undefined = workspace

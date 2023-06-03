@@ -1,4 +1,4 @@
-import { Repository } from "./../typings/git.d";
+import { Repository } from "../../commons/typings/git";
 import {
   getCommitTemplate,
   getCommitOptions,
@@ -7,13 +7,16 @@ import {
 } from "./../utils/settings";
 import { repoNameMapper } from "../utils/git";
 import { quickPick, quickText } from "../command/action/prompt-action";
-import { RepositoryList, SelectedRepository } from "../typings/repository";
+import {
+  RepositoryList,
+  SelectedRepository,
+} from "../../commons/typings/repository";
 import {
   Commit,
   AutofillCommits,
   InputOption,
   InputSettings,
-} from "../typings/settings";
+} from "../../commons/typings/settings";
 import { expandAllRepository } from "../command";
 import {
   mapDefaultValueByLabel,
