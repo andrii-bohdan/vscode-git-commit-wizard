@@ -11,17 +11,17 @@
     "url": "https://github.com/andrii-bohdan/vscode-git-commit-wizard"
   },
   "engines": {
-    "vscode": "^1.60.0"
+    "vscode": "^1.74.0"
   },
   "categories": [
     "Other",
     "Formatters",
     "SCM Providers"
   ],
-  "main": "./out/index.js",
+  "main": "./out/app/index.js",
+  "browser": "./out/web/index.js",
   "activationEvents": [
-    "onStartupFinished",
-    "onCommand:git-commit-wizard.openCommitMessage"
+    "onStartupFinished"
   ],
   "contributes": {
     "configuration": {
@@ -152,7 +152,8 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "test": "node ./out/test/runTest.js",
+    "test:web": "npm run compile && vscode-test-web --extensionDevelopmentPath=. "
   },
   "devDependencies": {
     "@types/emoji-regex": "^9.2.0",
@@ -163,6 +164,7 @@
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
     "@vscode/test-electron": "^2.3.0",
+    "@vscode/test-web": "^0.0.44",
     "eslint": "^8.36.0",
     "glob": "^8.1.0",
     "mocha": "^10.2.0",
