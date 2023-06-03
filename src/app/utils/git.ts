@@ -1,5 +1,5 @@
-import { RepositoryList } from "../typings/repository";
-import { Repository } from "./../typings/git.d";
+import { RepositoryList } from "../../commons/typings/repository";
+import { Repository } from "../../commons/typings/git";
 import { extensions, window } from "vscode";
 
 export const gitRepositories = async () => {
