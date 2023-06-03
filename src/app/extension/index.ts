@@ -19,7 +19,7 @@ import {
 } from "../../commons/typings/settings";
 import { expandAllRepository } from "../command";
 import {
-  mapDefaultValueByLabel,
+  mapAutofillValueByLabel,
   templateParser,
   templateSerializer,
 } from "../utils/mapper";
@@ -27,16 +27,13 @@ import {
 export const activateExtension = async (repositories: Repository[]) => {
   const commitReplacements: Commit[] = [];
   let selectedRepo: SelectedRepository | string;
-
   let storedLabel: string | undefined;
-
-  const mappedRepository: RepositoryList[] = await repoNameMapper(repositories);
-
   const template = getCommitTemplate() || "{prefix}: {message}";
   const variables = templateParser(template);
   const commitOptions = getCommitOptions();
   const autofillCommitsList: AutofillCommits = getAutofillCommits();
   const inputOptions: InputSettings = getInputSettings();
+  const mappedRepository: RepositoryList[] = await repoNameMapper(repositories);
 
   if (mappedRepository.length > 1) {
     const { title = "Repository", placeholder } = inputOptions["repository"];
@@ -60,7 +57,7 @@ export const activateExtension = async (repositories: Repository[]) => {
       value: "",
     };
 
-    const autofillCommit = mapDefaultValueByLabel(
+    const autofillCommit = mapAutofillValueByLabel(
       autofillCommitsList[v],
       storedLabel
     );

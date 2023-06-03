@@ -1,7 +1,7 @@
 import emojiRegex from "emoji-regex";
 import { Commit } from "../../commons/typings/settings";
 
-export const mapDefaultValueByLabel = (
+export const mapAutofillValueByLabel = (
   values: Commit[],
   label?: string
 ): string | undefined => {
