@@ -22,7 +22,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          commit-message: "🔼 bump(v): version to {{version}} [skip ci]"
+          commit-message: "🔼 bump(v): version to {{version}}"
 
       - name: Create Tag
         id: create_tag
