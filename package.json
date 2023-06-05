@@ -152,7 +152,8 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js",
+    "test": "node ./out/app/test/runTest.js",
+    "test:watch": "npx mocha --recursive --watch --timeout 1000 ./out/app/test/runTest.js",
     "test:web": "npm run compile && vscode-test-web --extensionDevelopmentPath=. "
   },
   "devDependencies": {
@@ -165,6 +166,7 @@
     "@typescript-eslint/parser": "^5.56.0",
     "@vscode/test-electron": "^2.3.0",
     "@vscode/test-web": "^0.0.44",
+    "@vscode/vsce": "^2.19.0",
     "eslint": "^8.36.0",
     "glob": "^8.1.0",
     "mocha": "^10.2.0",
