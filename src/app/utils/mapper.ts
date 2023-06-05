@@ -1,12 +1,19 @@
-import emojiRegex from "emoji-regex";
 import { Commit } from "../../commons/typings/settings";
+
+export function extractString(str: string | undefined): string {
+  const regex = /[\p{L}\p{N}\s]+/u;
+  const matches = str?.match(regex);
+  if (matches && matches.length > 0) {
+    return matches[0].trim();
+  }
+  return "";
+}
 
 export const mapAutofillValueByLabel = (
   values: Commit[],
   label?: string
 ): string | undefined => {
-  const regex = emojiRegex();
-  const regexLabel = label?.replace(regex, "").trim();
+  const regexLabel = extractString(label);
   const filteredValue = values
     ?.filter((c: Commit) => c.key === regexLabel)
     .map((v) => v.value)[0];
