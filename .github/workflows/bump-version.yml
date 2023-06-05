@@ -26,18 +26,8 @@ jobs:
 
       - name: Create Tag
         id: create_tag
-        run: |
-          echo ::set-output name=tag::v${{ steps.version.outputs.new_version }}
-
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: Klemensas/action-autotag@stable
         with:
-          tag_name: ${{ steps.create_tag.outputs.tag }}
-          release_name: Release ${{ steps.version.outputs.new_version }}
-          body: |
-            Auto-generated release for version ${{ steps.version.outputs.new_version }}.
-          draft: false
-          prerelease: false
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          tag_prefix: "v"
+          tag_name: "v.${{ github.event.pull_request.head.ref }}"
