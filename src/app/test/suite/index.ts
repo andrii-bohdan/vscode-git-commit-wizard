@@ -1,4 +1,4 @@
-import * as path from "path";
+import path from "path";
 import Mocha from "mocha";
 import { glob } from "glob";
 
@@ -7,6 +7,7 @@ export function run(): Promise<void> {
   const mocha = new Mocha({
     ui: "tdd",
     color: true,
+    timeout: 1000,
   });
 
   const testsRoot = path.resolve(__dirname, "..");
