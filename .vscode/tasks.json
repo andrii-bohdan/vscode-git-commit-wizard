@@ -22,6 +22,15 @@
       "group": "build",
       "isBackground": true,
       "problemMatcher": "$tsc-watch"
+    },
+    {
+      "label": "npm: compile",
+      "type": "npm",
+      "script": "compile",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
     }
   ]
 }
