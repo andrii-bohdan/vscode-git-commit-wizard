@@ -1,8 +1,8 @@
 name: Deploy Extension
 
 push:
-    branches:
-      - main
+  branches:
+    - main
   release:
     types:
       - created
