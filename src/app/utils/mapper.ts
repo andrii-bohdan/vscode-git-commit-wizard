@@ -36,6 +36,9 @@ export const templateSerializer = (template: string, data: Commit[]) => {
 
   for (let i = 0; i < data.length; i++) {
     const e = data[i];
+    if (e.key === "scope" && e.value === "") {
+      newTemplate = newTemplate.replace(`({${e.key}})`, "");
+    }
     newTemplate = newTemplate.replace(`{${e.key}}`, e.value);
   }
 
