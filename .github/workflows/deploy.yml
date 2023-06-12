@@ -1,9 +1,10 @@
+name: Deploy Extension
+
 on:
   push:
     branches:
-      - "*"
+      - "fix**"
 
-name: Deploy Extension
 jobs:
   deploy:
     runs-on: ubuntu-latest
