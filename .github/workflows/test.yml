@@ -1,10 +1,12 @@
+name: Test
+
 on:
   push:
     branches:
-      - main
-  release:
-    types:
-      - created
+      - pre-dev
+      - "feat**"
+      - "fix**"
+      - "test**"
 
 jobs:
   build:
@@ -27,9 +29,3 @@ jobs:
 
       - run: npm test
         if: runner.os != 'Linux'
-
-      - name: Publish extension Marketplace
-        if: success() && startsWith(github.ref, 'refs/tags/') && matrix.os == 'ubuntu-latest'
-        run: npm run deploy
-        env:
-          VSCE_PAT: ${{ secrets.VSCE_PAT }}

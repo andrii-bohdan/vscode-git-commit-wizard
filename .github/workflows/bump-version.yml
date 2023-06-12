@@ -23,11 +23,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           commit-message: "🔼 bump(v): version to {{version}}"
-
-      - name: Create Tag
-        id: create_tag
-        uses: Klemensas/action-autotag@stable
-        with:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          tag_prefix: "v"
-          tag_name: "v.${{ github.event.pull_request.head.ref }}"
