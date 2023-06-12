@@ -2,11 +2,8 @@ name: Deploy Extension
 
 on:
   push:
-    branches:
-      - main
-    release:
-      types:
-        - created
+    tags:
+      - "*"
 
 jobs:
   deploy:
