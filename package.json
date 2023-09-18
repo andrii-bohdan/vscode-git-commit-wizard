@@ -142,9 +142,22 @@
     "commands": [
       {
         "command": "git-commit-wizard.openCommitMessage",
-        "title": "Git Commit Wizard"
+        "title": "Git Commit Wizard",
+        "icon": {
+          "dark": "assets/image/icon-dark.png",
+          "light": "assets/image/icon-light.png"
+        }
       }
-    ]
+    ],
+    "menus": {
+      "scm/title": [
+        {
+          "command": "git-commit-wizard.openCommitMessage",
+          "group": "navigation",
+          "when": "scmProvider == git"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
