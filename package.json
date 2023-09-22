@@ -27,6 +27,11 @@
     "configuration": {
       "title": "Git Commit Wizard",
       "properties": {
+        "git-commit-wizard.showIconsInSCMTitle": {
+          "type": "boolean",
+          "default": false,
+          "description": "Controls the visibility of icons in the SCM title"
+        },
         "git-commit-wizard.commitTemplate": {
           "type": "array",
           "items": {
@@ -154,7 +159,7 @@
         {
           "command": "git-commit-wizard.openCommitMessage",
           "group": "navigation",
-          "when": "scmProvider == git"
+          "when": "git-commit-wizard:enableSCMIcon"
         }
       ]
     }
