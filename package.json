@@ -2,7 +2,7 @@
   "name": "git-commit-wizard",
   "displayName": "git-commit-wizard",
   "description": "A customizable VS Code extension for semantic committing, compatible with microservices and multiple source control repositories.",
-  "version": "2.0.17",
+  "version": "2.0.18",
   "author": "Andrii Bohdan",
   "icon": "assets/image/wizard-icon.png",
   "publisher": "andrii-bohdan",
@@ -27,6 +27,11 @@
     "configuration": {
       "title": "Git Commit Wizard",
       "properties": {
+        "git-commit-wizard.showIconsInSCMTitle": {
+          "type": "boolean",
+          "default": false,
+          "description": "Controls the visibility of icons in the SCM title"
+        },
         "git-commit-wizard.commitTemplate": {
           "type": "array",
           "items": {
@@ -154,7 +159,7 @@
         {
           "command": "git-commit-wizard.openCommitMessage",
           "group": "navigation",
-          "when": "scmProvider == git"
+          "when": "git-commit-wizard:enableSCMIcon"
         }
       ]
     }

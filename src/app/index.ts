@@ -20,6 +20,28 @@ export function activate(context: vscode.ExtensionContext) {
       }, 200);
     })
   );
+
+  vscode.workspace.onDidChangeConfiguration((event) => {
+    if (event.affectsConfiguration("git-commit-wizard.showIconsInSCMTitle")) {
+      const updatedShowIconsInSCMTitle = vscode.workspace
+        .getConfiguration()
+        .get("git-commit-wizard.showIconsInSCMTitle");
+
+      if (updatedShowIconsInSCMTitle) {
+        vscode.commands.executeCommand(
+          "setContext",
+          "git-commit-wizard:enableSCMIcon",
+          true
+        );
+      } else {
+        vscode.commands.executeCommand(
+          "setContext",
+          "git-commit-wizard:enableSCMIcon",
+          false
+        );
+      }
+    }
+  });
 }
 
 export function deactivate() {}

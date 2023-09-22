@@ -3,6 +3,7 @@ name: Test
 on:
   push:
     branches:
+      - pre-dev
       - "feat**"
       - "fix**"
       - "test**"
