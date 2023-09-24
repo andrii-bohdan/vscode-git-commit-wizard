@@ -1,6 +1,10 @@
 import { gitRepositories } from "./utils/git";
 import { activateExtension } from "./extension/index";
-import { EXTENSION_COMMAND_NAME } from "./config/index";
+import {
+  EXTENSION_COMMAND_NAME,
+  EXTENSION_SHOW_SCM_ICON,
+  EXTENSION_SHOW_STATUS_BAR_ICON,
+} from "./config/index";
 import * as vscode from "vscode";
 import { openGitCommand, createStatusBar } from "./command";
 
@@ -9,7 +13,7 @@ export function activate(context: vscode.ExtensionContext) {
     'Congratulations, your extension "git-commit-wizard" is now active!'
   );
 
-  createStatusBar();
+  const statusBarItem = createStatusBar();
 
   context.subscriptions.push(
     vscode.commands.registerCommand(EXTENSION_COMMAND_NAME, () => {
@@ -22,10 +26,10 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   vscode.workspace.onDidChangeConfiguration((event) => {
-    if (event.affectsConfiguration("git-commit-wizard.showIconsInSCMTitle")) {
+    if (event.affectsConfiguration(EXTENSION_SHOW_SCM_ICON)) {
       const updatedShowIconsInSCMTitle = vscode.workspace
         .getConfiguration()
-        .get("git-commit-wizard.showIconsInSCMTitle");
+        .get(EXTENSION_SHOW_SCM_ICON);
 
       if (updatedShowIconsInSCMTitle) {
         vscode.commands.executeCommand(
@@ -39,6 +43,17 @@ export function activate(context: vscode.ExtensionContext) {
           "git-commit-wizard:enableSCMIcon",
           false
         );
+      }
+    }
+    if (event.affectsConfiguration(EXTENSION_SHOW_STATUS_BAR_ICON)) {
+      const showStatusBarIcon = vscode.workspace
+        .getConfiguration()
+        .get(EXTENSION_SHOW_STATUS_BAR_ICON);
+
+      if (showStatusBarIcon) {
+        statusBarItem.show();
+      } else {
+        statusBarItem.hide();
       }
     }
   });
