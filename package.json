@@ -29,8 +29,13 @@
       "properties": {
         "git-commit-wizard.showIconsInSCMTitle": {
           "type": "boolean",
-          "default": false,
+          "default": true,
           "description": "Controls the visibility of icons in the SCM title"
+        },
+        "git-commit-wizard.showStatusBarIcon": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable/Disable the visibility of status bar"
         },
         "git-commit-wizard.commitTemplate": {
           "type": "array",
