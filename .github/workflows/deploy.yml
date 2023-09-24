@@ -5,6 +5,10 @@ on:
     branches:
       - master
       - main
+      - development
+  pull_request:
+    branches:
+      - main
 
 jobs:
   tag-release:
