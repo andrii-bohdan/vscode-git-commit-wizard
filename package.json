@@ -37,6 +37,11 @@
           "default": false,
           "description": "Enable/Disable the visibility of status bar"
         },
+        "git-commit-wizard.showEmojis": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/Disable the visibility of emojis"
+        },
         "git-commit-wizard.commitTemplate": {
           "type": "array",
           "items": {
