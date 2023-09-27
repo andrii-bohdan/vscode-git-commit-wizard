@@ -37,3 +37,11 @@ export const getInputSettings = (): InputSettings => {
 
   return inputSettings as InputSettings;
 };
+
+export const getEmojiSettings = (): boolean => {
+  const emojiSettings = workspace
+    .getConfiguration(EXTENSION_NAME)
+    .get("showEmojis");
+
+  return emojiSettings as boolean;
+};
