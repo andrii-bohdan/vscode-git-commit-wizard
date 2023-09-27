@@ -23,3 +23,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           commit-message: "🔼 bump(v): version to {{version}}"
+          skip-tag: "true"
