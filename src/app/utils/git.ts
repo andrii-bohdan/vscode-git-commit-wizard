@@ -1,4 +1,3 @@
-import { RepositoryList } from "../../commons/typings/repository";
 import { Repository } from "../../commons/typings/git";
 import { extensions, window } from "vscode";
 
@@ -15,16 +14,4 @@ export const gitRepositories = async () => {
   }
 
   return repositories;
-};
-
-export const repoNameMapper = async (
-  repositories: Repository[]
-): Promise<RepositoryList[]> => {
-  const repoNames = repositories.map((repository: Repository) => {
-    const repoPath = repository.rootUri.path;
-    const repoName = repoPath.substring(repoPath.lastIndexOf("/") + 1);
-    return { label: repoName, ...repository };
-  });
-
-  return repoNames;
 };

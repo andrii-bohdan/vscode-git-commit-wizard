@@ -13,7 +13,7 @@ export interface Commit {
   key: string;
   value: string;
 }
-export interface AutofillCommits {
+export interface DefaultCommits {
   [key: string]: Commit[];
 }
 
