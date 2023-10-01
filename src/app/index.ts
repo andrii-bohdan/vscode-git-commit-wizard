@@ -15,14 +15,16 @@ export function activate(context: vscode.ExtensionContext) {
 
   const statusBarItem = createStatusBar();
 
-  context.subscriptions.push(
-    vscode.commands.registerCommand(EXTENSION_COMMAND_NAME, () => {
+  let disposable = vscode.commands.registerCommand(
+    EXTENSION_COMMAND_NAME,
+    (uri) => {
       setTimeout(async () => {
         await openGitCommand();
+
         const repositories = await gitRepositories();
-        await activateExtension(repositories);
+        await activateExtension(repositories, uri);
       }, 200);
-    })
+    }
   );
 
   vscode.workspace.onDidChangeConfiguration((event) => {
@@ -57,6 +59,8 @@ export function activate(context: vscode.ExtensionContext) {
       }
     }
   });
+
+  context.subscriptions.push(disposable);
 }
 
 export function deactivate() {}
