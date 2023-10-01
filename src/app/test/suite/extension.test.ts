@@ -1,7 +1,7 @@
 import * as assert from "assert";
 import {
   extractString,
-  mapAutofillValueByLabel,
+  extractDefaultCommit,
   templateParser,
   templateSerializer,
 } from "../../utils/mapper";
@@ -12,7 +12,7 @@ suite("Extension Test Suite", () => {
       { key: "feat", value: "New feature" },
       { key: "fix", value: "Bug fix" },
     ];
-    const autofillValue = mapAutofillValueByLabel(commits, "feat");
+    const autofillValue = extractDefaultCommit(commits, "feat");
     assert.strictEqual(autofillValue, "New feature");
   });
 
