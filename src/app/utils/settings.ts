@@ -2,7 +2,7 @@ import { EXTENSION_NAME } from "./../config/index";
 import { workspace } from "vscode";
 import {
   InputSettings,
-  AutofillCommits,
+  DefaultCommits,
   CommitOptions,
 } from "../../commons/typings/settings";
 
@@ -22,12 +22,12 @@ export const getCommitOptions = () => {
   return commitOptions as CommitOptions;
 };
 
-export const getAutofillCommits = (): AutofillCommits => {
-  const autofillCommits = workspace
+export const getDefaultCommits = (): DefaultCommits => {
+  const defaultCommits = workspace
     .getConfiguration(EXTENSION_NAME)
     .get("autofillCommits");
 
-  return autofillCommits as AutofillCommits;
+  return defaultCommits as DefaultCommits;
 };
 
 export const getInputSettings = (): InputSettings => {

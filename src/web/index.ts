@@ -13,7 +13,7 @@ import {
 } from "vscode";
 import { Repository } from "../commons/typings/git";
 import {
-  AutofillCommits,
+  DefaultCommits,
   InputSettings,
   Commit,
   InputOption,
@@ -52,7 +52,7 @@ async function runExtension(repositories: Repository[]) {
   const template = getCommitTemplate() || "{prefix}: {message}";
   const variables = templateParser(template);
   const commitOptions = getCommitOptions();
-  const autofillCommitsList: AutofillCommits = getAutofillCommits();
+  const autofillCommitsList = getAutofillCommits();
   const inputOptions: InputSettings = getInputSettings();
 
   const mappedRepository: RepositoryList[] = await repoNameMapper(repositories);
@@ -180,12 +180,12 @@ function getCommitOptions() {
   return commitOptions as CommitOptions;
 }
 
-function getAutofillCommits(): AutofillCommits {
+function getAutofillCommits(): DefaultCommits {
   const autofillCommits = workspace
     .getConfiguration(EXTENSION_NAME)
     .get("autofillCommits");
 
-  return autofillCommits as AutofillCommits;
+  return autofillCommits as DefaultCommits;
 }
 
 function getInputSettings(): InputSettings {
