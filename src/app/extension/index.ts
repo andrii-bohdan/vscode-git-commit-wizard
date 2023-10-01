@@ -2,50 +2,47 @@ import { Repository } from "../../commons/typings/git";
 import {
   getCommitTemplate,
   getCommitOptions,
-  getAutofillCommits,
+  getDefaultCommits,
   getInputSettings,
 } from "./../utils/settings";
-import { repoNameMapper } from "../utils/git";
 import { quickPick, quickText } from "../command/action/prompt-action";
-import {
-  RepositoryList,
-  SelectedRepository,
-} from "../../commons/typings/repository";
-import {
-  Commit,
-  AutofillCommits,
-  InputOption,
-  InputSettings,
-} from "../../commons/typings/settings";
+import { SelectedRepository } from "../../commons/typings/repository";
+import { Commit, InputOption } from "../../commons/typings/settings";
 import { expandAllRepository } from "../command";
 import {
-  mapAutofillValueByLabel,
+  extractRepositoryLabel,
+  extractDefaultCommit,
   templateParser,
   templateSerializer,
 } from "../utils/mapper";
 
-export const activateExtension = async (repositories: Repository[]) => {
+export const activateExtension = async (
+  repositories: Repository[],
+  uri: any
+) => {
   const commitReplacements: Commit[] = [];
   let selectedRepo: SelectedRepository | string;
   let storedLabel: string | undefined;
   const template = getCommitTemplate() || "{prefix}: {message}";
   const variables = templateParser(template);
   const commitOptions = getCommitOptions();
-  const autofillCommitsList: AutofillCommits = getAutofillCommits();
-  const inputOptions: InputSettings = getInputSettings();
-  const mappedRepository: RepositoryList[] = await repoNameMapper(repositories);
+  const configDefaultCommits = getDefaultCommits();
+  const inputOptions = getInputSettings();
+  const labelRepository = await extractRepositoryLabel(repositories);
 
-  if (mappedRepository.length > 1) {
-    const { title = "Repository", placeholder } = inputOptions["repository"];
-    selectedRepo = await quickPick(
-      {
-        title,
-        ignoreFocusOut: false,
-        placeHolder: placeholder || "Please select a repository",
-      },
-      mappedRepository
-    );
-    await expandAllRepository();
+  if (!uri) {
+    if (labelRepository.length > 1) {
+      const { title = "Repository", placeholder } = inputOptions["repository"];
+      selectedRepo = await quickPick(
+        {
+          title,
+          ignoreFocusOut: false,
+          placeHolder: placeholder || "Please select a repository",
+        },
+        labelRepository
+      );
+      await expandAllRepository();
+    }
   }
 
   for (let i = 0; i < variables.length; i++) {
@@ -57,8 +54,8 @@ export const activateExtension = async (repositories: Repository[]) => {
       value: "",
     };
 
-    const autofillCommit = mapAutofillValueByLabel(
-      autofillCommitsList[v],
+    const defaultCommit = extractDefaultCommit(
+      configDefaultCommits[v],
       storedLabel
     );
     const { title = v, placeholder }: InputOption = inputOptions[v];
@@ -68,9 +65,9 @@ export const activateExtension = async (repositories: Repository[]) => {
         title,
         placeHolder: placeholder || `Enter the <${v}> of the commit`,
         ignoreFocusOut: false,
-        value: autofillCommit,
-        prompt: !!autofillCommit
-          ? `The default value is: "${autofillCommit}"`
+        value: defaultCommit,
+        prompt: !!defaultCommit
+          ? `The default value is: "${defaultCommit}"`
           : undefined,
       });
       result.value = inputText;
@@ -92,12 +89,26 @@ export const activateExtension = async (repositories: Repository[]) => {
     commitReplacements.push(result);
   }
 
-  const currentRepo: RepositoryList =
-    mappedRepository.find((r: any) => r.label === selectedRepo) ??
-    mappedRepository[0];
-
   if (commitReplacements.length >= variables.length) {
     const commitMessage = templateSerializer(template, commitReplacements);
-    currentRepo.inputBox.value = commitMessage;
+    if (uri) {
+      const uriPath = uri._rootUri?.path || uri.rootUri.path;
+      const selectedRepository = repositories.find((repository) => {
+        return repository.rootUri.path === uriPath;
+      });
+
+      if (selectedRepository) {
+        writeCommit(selectedRepository, commitMessage);
+      }
+    } else {
+      const selectedRepository =
+        labelRepository.find((r: any) => r.label === selectedRepo) ??
+        labelRepository[0];
+      writeCommit(selectedRepository, commitMessage);
+    }
   }
 };
+
+function writeCommit(repository: Repository, message: string) {
+  repository.inputBox.value = message;
+}
