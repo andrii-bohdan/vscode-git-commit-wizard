@@ -1,3 +1,5 @@
+import { Repository } from "../../commons/typings/git";
+import { RepositoryList } from "../../commons/typings/repository";
 import { Commit } from "../../commons/typings/settings";
 import { getEmojiSettings } from "./settings";
 
@@ -10,7 +12,7 @@ export function extractString(str: string | undefined): string {
   return "";
 }
 
-export const mapAutofillValueByLabel = (
+export const extractDefaultCommit = (
   values: Commit[],
   label?: string
 ): string | undefined => {
@@ -47,4 +49,16 @@ export const templateSerializer = (template: string, data: Commit[]) => {
   }
 
   return newTemplate.trim();
+};
+
+export const extractRepositoryLabel = async (
+  repositories: Repository[]
+): Promise<RepositoryList[]> => {
+  const repoNames = repositories.map((repository: Repository) => {
+    const repoPath = repository.rootUri.path;
+    const repoName = repoPath.substring(repoPath.lastIndexOf("/") + 1);
+    return { label: repoName, ...repository };
+  });
+
+  return repoNames;
 };
