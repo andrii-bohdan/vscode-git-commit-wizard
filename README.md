@@ -27,9 +27,7 @@
 
 This extension helps users write well-structured commit messages, making it easier to maintain and manage changes to code repositories. With its versatility, it can be used across multiple repositories in source control trees, enabling users to maintain a consistent approach to commit message formatting across their projects.
 
-
 <img src="./assets/demo.gif" alt="Git Commit Wizard"/>
-
 
 <h2>Features</h2>
 
@@ -48,6 +46,12 @@ Please ensure that the Git extension is enabled in your VS Code environment.
 This extension contributes the following settings:
 
 `git-commit-wizard.enable`: Enable/disable this extension.
+
+`git-commit-wizard.showIconsInSCMTitle`: Enable/disable the visibility of icons in the SCM title.
+
+`git-commit-wizard.showStatusBarIcon`: Enable/disable the visibility of status bar.
+
+`git-commit-wizard.showEmojis`: Enable/Disable the visibility of emojis.
 
 `git-commit-wizard.commitTemplate`:
 
@@ -176,3 +180,5 @@ Initial release of Git-Commit-Wizard.
 <h2> Known Issues </h2>
 
 There are no known issues at this time.
+
+    "vscode": "^1.74.0"
