@@ -1,5 +1,5 @@
   <div align="center">
-    <img src="./assets/image/wizard-icon.png"alt="wizard icon"/> 
+    <img src="./assets/image/wizard-icon.png"alt="wizard icon" width="200px" height="200px"/> 
   </div>
   
   <h1 align="center"> VS Code - Git Commit Wizard</h1>
