@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - pre-dev
-      - "feat**"
-      - "fix**"
-      - "test**"
 
 jobs:
   build:
