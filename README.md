@@ -4,6 +4,11 @@
   
   <h1 align="center"> VS Code - Git Commit Wizard</h1>
   
+ <div align="center">
+  <img alt="Test Status" height="25px" src="https://github.com/andrii-bohdan/vscode-git-commit-wizard/actions/workflows/test.yml/badge.svg?branch=pre-dev">
+</div>
+<br/>
+  
   <div align="center">
      <a href="https://marketplace.visualstudio.com/items?itemName=andrii-bohdan.git-commit-wizard" alt="Marketplace"><img src="https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" alt="Marketplace"></a>
      <a href="https://open-vsx.org/extension/andrii-bohdan/git-commit-wizard" alt="Open Eclipse"><img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white" ></a>
@@ -181,4 +186,4 @@ Initial release of Git-Commit-Wizard.
 
 There are no known issues at this time.
 
-    "vscode": "^1.74.0"
+    "vscode": "^1.83.0"
