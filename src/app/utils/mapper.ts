@@ -4,11 +4,13 @@ import { Commit } from "../../commons/typings/settings";
 import { getEmojiSettings } from "./settings";
 
 export function extractString(str: string | undefined): string {
-  const regex = /[\p{L}\p{N}\s]+/u;
+  const regex = /[\u0020-\u007e\u00a0-\u00ff\u0152\u0153\u0178]+/gu;
   const matches = str?.match(regex);
+
   if (matches && matches.length > 0) {
     return matches[0].trim();
   }
+
   return "";
 }
 
@@ -39,12 +41,15 @@ export const templateSerializer = (template: string, data: Commit[]) => {
   const showEmojis = getEmojiSettings();
   for (let i = 0; i < data.length; i++) {
     const e = data[i];
+
     if (!showEmojis) {
       e.value = extractString(e.value);
     }
+
     if (e.key === "scope" && e.value === "") {
       newTemplate = newTemplate.replace(`({${e.key}})`, "");
     }
+
     newTemplate = newTemplate.replace(`{${e.key}}`, e.value);
   }
 
