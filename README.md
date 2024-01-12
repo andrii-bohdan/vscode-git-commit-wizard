@@ -178,7 +178,7 @@ This extension also includes a keyboard shortcut to quickly open the commit mess
 
 <h2> Release Notes </h2>
 
-### 1.0.12
+### v1.0.12
 
 Initial release of Git-Commit-Wizard.
 
