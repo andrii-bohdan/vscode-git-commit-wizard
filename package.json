@@ -15,7 +15,6 @@
   },
   "categories": [
     "Other",
-    "Formatters",
     "SCM Providers"
   ],
   "main": "./out/app/index.js",
