@@ -34,7 +34,3 @@ export const quickText = async (params: InputBoxOptions) => {
 
   return input;
 };
-
-
-
-

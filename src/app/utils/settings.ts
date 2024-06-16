@@ -49,19 +49,24 @@ export const getEmojiSettings = (): boolean => {
 
 export const getSpellCheckSettings = (): boolean => {
   const spellCheckSettings = workspace
-  .getConfiguration(EXTENSION_NAME)
-  .get("enableSpellCheck");
+    .getConfiguration(EXTENSION_NAME)
+    .get("enableSpellCheck");
 
   return spellCheckSettings as boolean;
 };
 
-
-export const getSpellCheckLocaleSettings = ():CountryFlags => {
+export const getSpellCheckLocaleSettings = (): CountryFlags => {
   const spellCheckLocaleSettings = workspace
-  .getConfiguration(EXTENSION_NAME)
-  .get("spellCheckLocale");
+    .getConfiguration(EXTENSION_NAME)
+    .get("spellCheckLocale");
 
   return spellCheckLocaleSettings as CountryFlags;
 };
 
+export const getSkippedWords = (): string[] => {
+  const skippedWords = workspace
+    .getConfiguration(EXTENSION_NAME)
+    .get("skippedWords");
 
+  return skippedWords as string[];
+};
