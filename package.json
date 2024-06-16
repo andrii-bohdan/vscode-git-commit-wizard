@@ -50,7 +50,12 @@
           "type": "string",
           "default": "en-US",
           "description": "Locale for spell checking",
-          "enum": ["en-US", "it-IT", "fr-FR", "es-ES"],
+          "enum": [
+            "en-US",
+            "it-IT",
+            "fr-FR",
+            "es-ES"
+          ],
           "enumDescriptions": [
             "English (United States)",
             "Italian (Italy)",
@@ -160,6 +165,14 @@
             ]
           },
           "markdownDescription": "In this section you can create/modify commit options.Each item in the list has a label and details. Add your own or use existing ones"
+        },
+        "git-commit-wizard.skippedWords": {
+          "type": "array",
+          "default": [],
+          "description": "Words to be skipped by the spellchecker",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
