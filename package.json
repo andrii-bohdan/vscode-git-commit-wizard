@@ -41,6 +41,23 @@
           "default": true,
           "description": "Enable/Disable the visibility of emojis"
         },
+        "git-commit-wizard.enableSpellCheck": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/Disable spell checking"
+        },
+        "git-commit-wizard.spellCheckLocale": {
+          "type": "string",
+          "default": "en-US",
+          "description": "Locale for spell checking",
+          "enum": ["en-US", "it-IT", "fr-FR", "es-ES"],
+          "enumDescriptions": [
+            "English (United States)",
+            "Italian (Italy)",
+            "French (France)",
+            "Spanish (Spain)"
+          ]
+        },
         "git-commit-wizard.commitTemplate": {
           "type": "array",
           "items": {
@@ -197,6 +214,9 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
-    "semver": ">=7.5.2"
+    "install": "^0.13.0",
+    "npm": "^10.8.1",
+    "semver": ">=7.5.2",
+    "simple-spellchecker": "^1.0.2"
   }
 }
