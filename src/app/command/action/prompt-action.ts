@@ -4,7 +4,9 @@ import {
   QuickPickOptions,
   window,
 } from "vscode";
+
 import { customQuickPick } from "../../utils/quick-inputs";
+import { spellCheck } from "../../utils/spelling";
 
 export const quickPick = async (
   params: QuickPickOptions,
@@ -22,10 +24,13 @@ export const quickPick = async (
 };
 
 export const quickText = async (params: InputBoxOptions) => {
+  await spellCheck(params);
+
   const input = await window.showInputBox(params);
   if (input === undefined) {
     window.showErrorMessage("Message is cancel");
     throw new Error("Message is cancel");
   }
+
   return input;
 };
