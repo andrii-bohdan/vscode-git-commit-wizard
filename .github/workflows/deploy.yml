@@ -1,11 +1,10 @@
 name: Tag and Deploy Release
 
 on:
-  pull_request:
+  push:
     branches:
+      - master
       - main
-    types:
-      - opened
 
 jobs:
   tag-release:

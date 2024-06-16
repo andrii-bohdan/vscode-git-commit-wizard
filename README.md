@@ -169,6 +169,57 @@ Example:
 
 ```
 
+`git-commit-wizard.enableSpellCheck`: Enable/Disable spell checking.
+
+`git-commit-wizard.spellCheckLocale`:
+
+An object containing a list of spell check locales. Each locales is represented by an array of string.
+
+Example:
+
+```
+{
+  "git-commit-wizard.spellCheckLocale": {
+    "type": "string",
+    "default": "en-US",
+    "description": "Locale for spell checking",
+    "enum": [
+      "en-US",
+      "it-IT",
+      "fr-FR",
+      "es-ES"
+    ],
+    "enumDescriptions": [
+      "English (United States)",
+      "Italian (Italy)",
+      "French (France)",
+      "Spanish (Spain)"
+    ]
+  },
+}
+
+```
+
+`git-commit-wizard.skippedWords`:
+
+An object containing a list of skipped words. The skipped words is represented by an array of string.
+
+Example:
+
+```
+{
+  "git-commit-wizard.skippedWords": {
+    "type": "array",
+    "default": [],
+    "description": "Words to be skipped by the spellchecker",
+    "items": {
+      "type": "string"
+    }
+  }
+}
+
+```
+
 <h2> Keyboard Shortcut </h2>
 
 This extension also includes a keyboard shortcut to quickly open the commit message scaffold. Use the following shortcut to activate it:
@@ -176,14 +227,3 @@ This extension also includes a keyboard shortcut to quickly open the commit mess
 - **Windows / Linux:** `Ctrl+Shift+Enter`
 - **macOS:** `Cmd+Shift+Enter`
 
-<h2> Release Notes </h2>
-
-### 1.0.12
-
-Initial release of Git-Commit-Wizard.
-
-<h2> Known Issues </h2>
-
-There are no known issues at this time.
-
-    "vscode": "^1.83.0"

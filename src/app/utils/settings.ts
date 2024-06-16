@@ -5,6 +5,7 @@ import {
   DefaultCommits,
   CommitOptions,
 } from "../../commons/typings/settings";
+import { CountryFlags } from "./spelling";
 
 export const getCommitTemplate = () => {
   const commitTemplate: string[] | undefined = workspace
@@ -44,4 +45,28 @@ export const getEmojiSettings = (): boolean => {
     .get("showEmojis");
 
   return emojiSettings as boolean;
+};
+
+export const getSpellCheckSettings = (): boolean => {
+  const spellCheckSettings = workspace
+    .getConfiguration(EXTENSION_NAME)
+    .get("enableSpellCheck");
+
+  return spellCheckSettings as boolean;
+};
+
+export const getSpellCheckLocaleSettings = (): CountryFlags => {
+  const spellCheckLocaleSettings = workspace
+    .getConfiguration(EXTENSION_NAME)
+    .get("spellCheckLocale");
+
+  return spellCheckLocaleSettings as CountryFlags;
+};
+
+export const getSkippedWords = (): string[] => {
+  const skippedWords = workspace
+    .getConfiguration(EXTENSION_NAME)
+    .get("skippedWords");
+
+  return skippedWords as string[];
 };
