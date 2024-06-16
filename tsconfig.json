@@ -1,17 +1,16 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "ES2020",
-    "outDir": "out",
-    "lib": ["ES2020"],
-    "types": [],
+    "target": "ES6",
+    "module": "Node16",
+    "lib": ["ES6"],
+    "moduleResolution": "node16",
+    "outDir": "./out",
+    "rootDir": "./src",
+    "strict": true,
     "esModuleInterop": true,
-    "sourceMap": true,
-    "rootDir": "src",
-    "strict": true /* enable all strict type-checking options */
-    /* Additional Checks */
-    // "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
-    // "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
-    // "noUnusedParameters": true,  /* Report errors on unused parameters. */
-  }
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", ".vscode-test"]
 }
