@@ -15,7 +15,6 @@
   },
   "categories": [
     "Other",
-    "Formatters",
     "SCM Providers"
   ],
   "main": "./out/app/index.js",
@@ -41,6 +40,28 @@
           "type": "boolean",
           "default": true,
           "description": "Enable/Disable the visibility of emojis"
+        },
+        "git-commit-wizard.enableSpellCheck": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/Disable spell checking"
+        },
+        "git-commit-wizard.spellCheckLocale": {
+          "type": "string",
+          "default": "en-US",
+          "description": "Locale for spell checking",
+          "enum": [
+            "en-US",
+            "it-IT",
+            "fr-FR",
+            "es-ES"
+          ],
+          "enumDescriptions": [
+            "English (United States)",
+            "Italian (Italy)",
+            "French (France)",
+            "Spanish (Spain)"
+          ]
         },
         "git-commit-wizard.commitTemplate": {
           "type": "array",
@@ -144,6 +165,14 @@
             ]
           },
           "markdownDescription": "In this section you can create/modify commit options.Each item in the list has a label and details. Add your own or use existing ones"
+        },
+        "git-commit-wizard.skippedWords": {
+          "type": "array",
+          "default": [],
+          "description": "Words to be skipped by the spellchecker",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -198,6 +227,9 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
-    "semver": ">=7.5.2"
+    "install": "^0.13.0",
+    "npm": "^10.8.1",
+    "semver": ">=7.5.2",
+    "simple-spellchecker": "^1.0.2"
   }
 }
